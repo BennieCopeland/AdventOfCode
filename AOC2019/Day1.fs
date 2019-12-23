@@ -104,8 +104,13 @@ let moduleMass =
         72977
     ]
 
-let calculateFuel mass =
-    (mass / 3) - 2
+let rec calculateFuel mass =
+    let fuel = (mass / 3) - 2
+
+    if fuel > 0 then
+        (calculateFuel fuel) + fuel
+    else
+        0
 
 let totalFuel =
     moduleMass
